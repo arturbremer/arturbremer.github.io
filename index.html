@@ -19,6 +19,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative; /* para posicionar os banners laterais */
         }
         
         .card {
@@ -30,6 +31,7 @@
             text-align: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             border: 1px solid #33334e;
+            z-index: 2;
         }
         
         h1 {
@@ -95,14 +97,55 @@
             margin-top: 20px;
         }
 
-        /* Espaçamento para os banners */
+        /* Espaçamento interno para banners dentro do card */
         .banner-space {
-            margin-top: 20px;
+            margin: 20px 0;
+        }
+
+        /* Banners laterais (fora do card) */
+        .banner-left, .banner-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px; /* mesmo tamanho do banner */
+            z-index: 1;
+        }
+
+        .banner-left {
+            left: 20px;
+        }
+
+        .banner-right {
+            right: 20px;
+        }
+
+        /* Para telas menores, os banners laterais somem ou ficam abaixo */
+        @media (max-width: 1200px) {
+            .banner-left, .banner-right {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- BANNER LATERAL ESQUERDO (2270) -->
+    <div class="banner-left">
+        <div id="adm-container-2270"></div>
+        <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2270&539&300&250&4&0&0"></script>
+    </div>
+
+    <!-- BANNER LATERAL DIREITO (2271) -->
+    <div class="banner-right">
+        <div id="adm-container-2271"></div>
+        <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2271&539&300&250&4&0&0"></script>
+    </div>
+
+    <!-- CARD PRINCIPAL -->
     <div class="card">
+        <!-- BANNER ACIMA DO TÍTULO (2269) -->
+        <div id="adm-container-2269" class="banner-space"></div>
+        <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2269&539&300&250&4&0&0"></script>
+
         <h1>Sony Vegas PRO 17</h1>
         <div class="subtitle">The link is available</div>
         <div class="description">
@@ -112,23 +155,9 @@
         <!-- BOTÃO DE DOWNLOAD -->
         <a href="#" class="download-btn" id="downloadBtn">DOWNLOAD</a>
         
-        <!-- Primeiro banner (2268) -->
+        <!-- BANNER ABAIXO DO BOTÃO (2268) -->
         <div id="adm-container-2268" class="banner-space"></div>
         <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2268&539&300&250&4&0&0"></script>
-
-        <!-- Segundo banner (2269) -->
-        <div id="adm-container-2269" class="banner-space"></div>
-        <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2269&539&300&250&4&0&0"></script>
-
-        <!-- terceiro banner (2270) -->
-        <div id="adm-container-2270"></div><script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2270&539&300&250&4&0&0"></script>
-       
-        <!-- quarto banner (2271) -->
-        <div id="adm-container-2271"></div><script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2271&539&300&250&4&0&0"></script>
-
-        
-        <!-- Opcional: footer note -->
-        <!-- <div class="footer-note">* Versão completa com crack incluído</div> -->
     </div>
 
     <!-- Script do botão -->
