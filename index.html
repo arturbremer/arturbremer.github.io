@@ -19,14 +19,14 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            position: relative; /* para posicionar os banners laterais */
+            position: relative;
         }
         
         .card {
             background: #0f0f1a;
             border-radius: 20px;
             padding: 40px 30px;
-            max-width: 500px;
+            max-width: 650px;
             width: 100%;
             text-align: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
@@ -40,6 +40,18 @@
             margin-bottom: 10px;
             font-weight: 800;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                white-space: normal;
+                font-size: 36px;
+            }
+            .card {
+                max-width: 100%;
+                padding: 30px 20px;
+            }
         }
         
         .subtitle {
@@ -90,6 +102,55 @@
             transform: translateY(10px);
             box-shadow: 0 0 0 #992e2e;
         }
+
+        /* Preço do Bitcoin */
+        .bitcoin-price {
+            background: #1e1e2f;
+            border-radius: 40px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #fbbf24;
+            font-size: 18px;
+            color: white;
+        }
+        .bitcoin-price i {
+            color: #fbbf24;
+            font-size: 24px;
+        }
+        .bitcoin-price .price {
+            font-weight: bold;
+            color: #fbbf24;
+        }
+        .bitcoin-price .change {
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            background: #2a2a40;
+        }
+        .bitcoin-price .change.up {
+            color: #4caf50;
+        }
+        .bitcoin-price .change.down {
+            color: #f44336;
+        }
+
+        /* Texto informativo */
+        .info-text {
+            color: #b0b0d0;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-top: 30px;
+            padding: 20px;
+            background: #1a1a2e;
+            border-radius: 15px;
+            border: 1px solid #33334e;
+            text-align: left;
+            font-style: italic;
+            border-left: 4px solid #fbbf24;
+        }
         
         .footer-note {
             color: #666699;
@@ -97,17 +158,10 @@
             margin-top: 20px;
         }
 
-        /* Espaçamento interno para banners dentro do card */
-        .banner-space {
-            margin: 20px 0;
-        }
-
-        /* Banners laterais (fora do card) */
+        /* Banners laterais */
         .banner-left, .banner-right {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 300px; /* mesmo tamanho do banner */
+            width: 300px;
             z-index: 1;
         }
 
@@ -119,8 +173,24 @@
             right: 20px;
         }
 
-        /* Para telas menores, os banners laterais somem ou ficam abaixo */
-        @media (max-width: 1200px) {
+        .banner-left.top {
+            top: 30%;
+            transform: translateY(-50%);
+        }
+        .banner-left.bottom {
+            top: 60%;
+            transform: translateY(-50%);
+        }
+        .banner-right.top {
+            top: 30%;
+            transform: translateY(-50%);
+        }
+        .banner-right.bottom {
+            top: 60%;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 1300px) {
             .banner-left, .banner-right {
                 display: none;
             }
@@ -128,23 +198,31 @@
     </style>
 </head>
 <body>
-    <!-- BANNER LATERAL ESQUERDO (2270) -->
-    <div class="banner-left">
+    <!-- BANNERS LATERAIS (4) -->
+    <div class="banner-left top">
+        <div id="adm-container-2269"></div>
+        <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2269&539&300&250&4&0&0"></script>
+    </div>
+    <div class="banner-left bottom">
         <div id="adm-container-2270"></div>
         <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2270&539&300&250&4&0&0"></script>
     </div>
-
-    <!-- BANNER LATERAL DIREITO (2271) -->
-    <div class="banner-right">
+    <div class="banner-right top">
+        <div id="adm-container-2268"></div>
+        <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2268&539&300&250&4&0&0"></script>
+    </div>
+    <div class="banner-right bottom">
         <div id="adm-container-2271"></div>
         <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2271&539&300&250&4&0&0"></script>
     </div>
 
     <!-- CARD PRINCIPAL -->
     <div class="card">
-        <!-- BANNER ACIMA DO TÍTULO (2269) -->
-        <div id="adm-container-2269" class="banner-space"></div>
-        <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2269&539&300&250&4&0&0"></script>
+        <!-- PREÇO DO BITCOIN (EM USD) -->
+        <div class="bitcoin-price" id="bitcoin-price">
+            <i class="fab fa-bitcoin"></i>
+            <span>Carregando...</span>
+        </div>
 
         <h1>Sony Vegas PRO 17</h1>
         <div class="subtitle">The link is available</div>
@@ -152,18 +230,17 @@
             Click the button below to start the download.
         </div>
         
-        <!-- BOTÃO DE DOWNLOAD -->
         <a href="#" class="download-btn" id="downloadBtn">DOWNLOAD</a>
         
-        <!-- BANNER ABAIXO DO BOTÃO (2268) -->
-        <div id="adm-container-2268" class="banner-space"></div>
-        <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2268&539&300&250&4&0&0"></script>
+        <div class="info-text">
+            Editing in VEGAS Pro is, at its core, a mining operation. Much like the crypto world—where GPUs grind 24/7 to validate blocks—Vegas pushes your hardware to the edge to flip raw data into a finished asset.<br><br>
+            Think of the timeline as a blockchain: a chronological sequence where every cut and effect demands its own "Proof of Work" from your rig. The final export is your token, but the process is pure volatility. That sinking feeling when the software crashes is no different from a market dump; both can wipe out hours of sweat and energy in a heartbeat if you don’t have your backups (or your private keys) locked down.
+        </div>
     </div>
-    
-<!-- AdKesef - Código do Anúncio -->
-<script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2272&539&0&0&1&9"></script>
-<!-- AdKesef - Código do Anúncio -->
-    
+
+    <!-- Script do pop-up -->
+    <script data-cfasync="false" async type="text/javascript" src="//adkesef.com/display/items.php?2272&539&0&0&1&9"></script>
+
     <!-- Script do botão -->
     <script>
         document.getElementById('downloadBtn').addEventListener('click', function(e) {
@@ -171,5 +248,36 @@
             window.location.href = 'https://drive.google.com/file/d/17kD02PMwpMTyD38kBZnXpRUVjwP-Mn4N';
         });
     </script>
+
+    <!-- Script para buscar preço do Bitcoin (USD) -->
+    <script>
+        async function fetchBitcoinPrice() {
+            const priceElement = document.getElementById('bitcoin-price');
+            try {
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');
+                const data = await response.json();
+                const price = data.bitcoin.usd;
+                const change = data.bitcoin.usd_24h_change;
+                // Formatação em dólar americano
+                const formattedPrice = price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                const changeFormatted = change.toFixed(2) + '%';
+                const changeClass = change >= 0 ? 'up' : 'down';
+                const changeSymbol = change >= 0 ? '▲' : '▼';
+                priceElement.innerHTML = `
+                    <i class="fab fa-bitcoin"></i>
+                    <span class="price">${formattedPrice}</span>
+                    <span class="change ${changeClass}">${changeSymbol} ${changeFormatted}</span>
+                `;
+            } catch (error) {
+                priceElement.innerHTML = `<i class="fab fa-bitcoin"></i><span>Indisponível</span>`;
+                console.error('Erro ao buscar Bitcoin:', error);
+            }
+        }
+        fetchBitcoinPrice();
+        setInterval(fetchBitcoinPrice, 60000); // atualiza a cada 60s
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </body>
 </html>
